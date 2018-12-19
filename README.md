@@ -1,12 +1,12 @@
-## Note, this is only a code sample containing several sample files. I tried to make it to be representative, but I can not guarantee that.
+## Note, this is only a code sample containing several sample files. I tried to make it to be representative.
 
-* #### The code sample for the front end, which is mainly based on Reactjs and Redux, is under `reactf` folder. Note that although I have learned HTML5, I do not have time to transfer all the tags for the React components into HTML5 tags.
+* #### The code sample for the front end, which is mainly based on Reactjs and Redux, is under `reactf` folder. Note that although I have learned HTML5, I did not have time to transfer all the tags for the React components into HTML5 tags.
 
 * #### The code sample for the web service, which is mainly based on Nodejs and MongoDB, is under `webservice` folder.
 
 * #### The code sample for the blockchain, which is mainly based on Hyperledger Fabric, is under `psytest-blockchain` folder. 
 
-Note that there are relatively more comments in the blockchain module but there are less comments in other modules. This is because blockchain is a new technology and other modules are relatively straightforward.
+Note that there are relatively more comments in the blockchain module but there are less comments in other modules. This is because blockchain is a new technology and comments helps.
 
 The full project has around 90 user created code files and is in a private repository.
 
