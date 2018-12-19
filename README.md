@@ -6,7 +6,7 @@
 
 * #### The code sample for the blockchain, which is mainly based on Hyperledger Fabric, is under `psytest-blockchain` folder. 
 
-Note that there are relatively more comments in the blockchain module but there are less comments in other modules. This is because blockchain is a new technology and comments helps.
+Note that there are relatively more comments in the blockchain module but there are less comments in other modules. This is because blockchain is a new technology and comments help.
 
 The full project has around 90 user created code files and is in a private repository.
 
