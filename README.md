@@ -1,6 +1,6 @@
-## Note, this is only a code sample containing several sample files. I tried to make it to be representative, but I can not guarantee.
+## Note, this is only a code sample containing several sample files. I tried to make it to be representative, but I can not guarantee that.
 
-* #### The code sample for the front end, which is mainly based on Reactjs and Redux, is under `reactf` folder. 
+* #### The code sample for the front end, which is mainly based on Reactjs and Redux, is under `reactf` folder. Note that although I have learned HTML5, I do not have time to transfer all the tags for the React components into HTML5 tags.
 
 * #### The code sample for the web service, which is mainly based on Nodejs and MongoDB, is under `webservice` folder.
 
