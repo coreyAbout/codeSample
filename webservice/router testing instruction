@@ -1,0 +1,112 @@
+//get method can be done through browser
+
+//add participant
+curl -H "Content-Type: application/json" -d \
+'{"role":"TestTaker",
+"email":"lucy@gmail.com", 
+"firstName":"Lucy", 
+"lastName":"Green", 
+"identifier":"1980"
+}' \
+http://localhost:3001/participant/add
+
+//add test
+curl -H "Content-Type: application/json" -d \
+'{
+  "testId": "001",
+  "testName": "IQ",
+  "creatorId": "lily@gmail.com",
+  "directorId": "lily@gmail.com",
+  "testAdminAccess": ["lucy4@gmail.com"],
+  "subNo": 2,
+  "subName": ["verbal", "visual"],
+  "description": "IQ test",
+  "hash": "abcdefg123",
+  "testAccess": ["lucy@gmail.com"],
+  "note": "nothing to add"
+}' \
+http://localhost:3001/asset/addTest
+
+
+
+//completeTestTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "testTakerId": "lucy@gmail.com",
+  "testId": "001",
+  "totalScore": "120",
+  "subScore": [["visual", "60"], ["verbal", "65"]],
+  "scoreAccess": ["lucy4@gmail.com"],
+  "note": "nothing to add"
+}' \
+http://localhost:3001/transaction/CompleteTest
+
+
+//testAdminAccessTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "type": "UpdateTestAdminAccess",
+  "testId": "001",
+  "addDelete": "add",
+  "whom": "alice@gmail.com"
+}' \
+http://localhost:3001/transaction/testAccess
+
+
+//testAccessTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "type": "UpdateTestAccess",
+  "testId": "001",
+  "addDelete": "add",
+  "whom": "alice@gmail.com"
+}' \
+http://localhost:3001/transaction/testAccess
+
+
+//testScoreAccessTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "testScoreId": "lucy@gmail.com>001",
+  "addDelete": "add",
+  "whom": "alice@gmail.com"
+}' \
+http://localhost:3001/transaction/testScoreAccess
+
+
+//testScoreNoteTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "type": "UpdateTestScoreNote",
+  "id": "lucy@gmail.com>001",
+  "note": "generated new note"
+}' \
+http://localhost:3001/transaction/updateNote
+
+//testNoteTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "type": "UpdateTestNote",
+  "id": "001",
+  "note": "generated new note"
+}' \
+http://localhost:3001/transaction/updateNote
+
+
+//testDirectorTransaction
+curl -H "Content-Type: application/json" -d \
+'{
+  "testId": "001",
+  "newDirectorId": "alice@gmail.com"
+}' \
+http://localhost:3001/transaction/testDirector
+
+//updateParticipant
+curl -H "Content-Type: application/json" -d \
+'{"role":"TestTaker",
+"id":"lucy1@gmail.com", 
+"firstName":"Lucy", 
+"lastName":"Green", 
+"identifier":"1999"
+}' \
+http://localhost:3001/participant/update

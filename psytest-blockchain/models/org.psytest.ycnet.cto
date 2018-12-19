@@ -1,0 +1,150 @@
+/**
+ * a network to for psychology test records
+ */
+
+namespace org.psytest.ycnet
+
+//subsection score of the test score
+concept SubScore {
+  o String subName
+  o String subScore
+}
+
+concept Note {
+  o DateTime dateTime
+  o String note
+}
+
+//user, for every participant
+abstract participant User identified by email {
+  o String email
+  o String firstName
+  o String lastName
+  o String identifier
+}
+
+//participant who takes the test
+participant TestTaker extends User {
+ 
+}
+
+//participant who administrates the test
+participant TestAdmin extends User {
+
+}
+
+//participant who views the test score data
+participant DataViewer extends User {
+
+}
+
+//participant who regulates the activity
+participant Regulator extends User {
+
+}
+
+//psychology test
+asset Test identified by testId {
+  o String testId
+  o String testName
+  --> TestAdmin creator
+  --> TestAdmin director
+  o String[] testAdminAccess
+  //number of subSection
+  o Integer subNo
+  o String[] subName
+  o String description
+  o String hash
+  o String[] testAccess
+  o Note[] testNote
+}
+
+//test score of each participant and each test
+asset TestScore identified by scoreId {
+  o String scoreId
+  --> TestTaker testTaker
+  --> Test test
+  o String totalScore
+  o SubScore[] subScore
+  o String[] scoreAccess
+  o Note[] scoreNote
+}
+
+//complete test transaction
+transaction CompleteTest {
+  --> TestTaker testTaker
+  --> Test test
+  o String totalScore
+  o SubScore[] subScore
+  o String[] scoreAccess
+  o Note[] scoreNote
+}
+
+//change test score access transaction
+transaction UpdateTestScoreAccess {
+  --> TestScore testScore
+  o String addDelete
+  o String whom
+}
+
+//change test access transaction
+transaction UpdateTestAccess {
+  --> Test test
+  o String addDelete
+  o String whom
+}
+
+//update test admin access for a test transaction
+transaction UpdateTestAdminAccess {
+  --> Test test
+  o String addDelete
+  o String whom
+}
+
+//change test score note transaction
+transaction UpdateTestScoreNote {
+  --> TestScore testScore
+  o Note newNote
+}
+
+//change test access transaction
+transaction UpdateTestNote {
+  --> Test test
+  o Note newNote
+}
+
+//change test director transaction
+transaction UpdateTestDirector {
+  --> Test test
+  --> TestAdmin newDirector
+}
+
+//********corresponding events**********
+event TestScoreNotification {
+  --> TestScore testScore
+}
+
+event UpdateScoreAccessNotification {
+  --> TestScore testScore
+}
+
+event UpdateScoreNoteNotification {
+  --> TestScore testScore
+}
+
+event UpdateTestAccessNotification {
+  --> Test test
+}
+
+event UpdateTestAdminAccessNotification {
+  --> Test test
+}
+
+event UpdateTestNoteNotification {
+  --> Test test
+}
+
+event UpdateTestDirectorNotification {
+  --> Test test
+}
+
